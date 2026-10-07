@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spending Limits — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link active">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Spending Limit Alerts</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Configure thresholds and track monthly usage alerts</p>
+            </div>
+        </header>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+            <div class="card">
+                <h3 style="font-size:1.1rem; color:#0f172a; margin-bottom:16px;">Set Monthly Spending Limit</h3>
+                <form id="set-limit-form">
+                    <div class="form-group">
+                        <label>Account Number</label>
+                        <input type="text" id="limit-acc-no" class="form-control" value="SB1001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Monthly Spending Limit (₹)</label>
+                        <input type="number" id="limit-amount" class="form-control" value="30000" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Save Limit Configuration</button>
+                </form>
+            </div>
+
+            <div class="card" id="limit-status-card">
+                <!-- Loaded dynamically -->
+            </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;">
+            <h4 style="font-size:1rem; color:#0f172a; margin-bottom:12px;">Alert Threshold Guide</h4>
+            <div class="form-row">
+                <div style="padding:12px; border-radius:8px; background-color:#dcfce7; color:#15803d; font-weight:600;">
+                    Below 70% → Normal
+                </div>
+                <div style="padding:12px; border-radius:8px; background-color:#fef3c7; color:#b45309; font-weight:600;">
+                    70–89% → Warning
+                </div>
+                <div style="padding:12px; border-radius:8px; background-color:#fee2e2; color:#b91c1c; font-weight:600;">
+                    90–100% → Critical
+                </div>
+                <div style="padding:12px; border-radius:8px; background-color:#7f1d1d; color:#ffffff; font-weight:600;">
+                    Above 100% → Limit Exceeded
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/limits.js"></script>
+</body>
+</html>

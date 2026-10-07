@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">
+            <div class="brand-icon">SB</div>
+            SmartBank
+        </div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Financial Overview</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Welcome back, Thejasvini M</p>
+            </div>
+            <div class="user-profile">
+                <div class="avatar">TM</div>
+                <div>
+                    <strong style="font-size:0.9rem;">Thejasvini M</strong>
+                    <div style="font-size:0.75rem; color:#64748b;">thejaswinimurugalingam@gmail.com</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="stats-grid">
+            <div class="card">
+                <div class="card-subtitle">Total Net Balance</div>
+                <div class="card-value" id="total-balance">₹0</div>
+                <span class="badge badge-success">Active Savings & Current</span>
+            </div>
+            <div class="card">
+                <div class="card-subtitle">Monthly Spending</div>
+                <div class="card-value" id="monthly-spending">₹0</div>
+                <span class="badge badge-info">Current Billing Cycle</span>
+            </div>
+            <div class="card">
+                <div class="card-subtitle">Total Savings Goal Funds</div>
+                <div class="card-value" id="savings-total">₹0</div>
+                <span class="badge badge-success">Allocated Funds</span>
+            </div>
+            <div class="card">
+                <div class="card-subtitle">Financial Health Score</div>
+                <div class="card-value" id="health-score">-- / 100</div>
+                <span class="badge badge-success" id="health-category">Good</span>
+            </div>
+        </section>
+
+        <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px; margin-bottom:32px;">
+            <div class="table-container" style="margin-bottom:0;">
+                <div style="padding:20px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center;">
+                    <h3 style="font-size:1.1rem; color:#0f172a;">Recent Transactions</h3>
+                    <a href="transactions.html" class="btn btn-secondary" style="font-size:0.8rem; padding:6px 12px;">View All</a>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Account</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recent-transactions-list">
+                        <!-- Loaded dynamically -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="card" id="primary-goal-widget">
+                    <div class="card-subtitle">Primary Savings Goal</div>
+                    <p style="font-size:0.9rem; color:#64748b;">Loading goal tracker...</p>
+                </div>
+                <div class="card" id="limit-widget">
+                    <div class="card-subtitle">Spending Limit Monitor</div>
+                    <p style="font-size:0.9rem; color:#64748b;">Loading spending limit status...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduled Payments — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link active">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Scheduled Payments</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Automate recurring rent, utility bills, and EMI payments</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('schedule-modal')">+ Schedule Payment</button>
+        </header>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Payee Name</th>
+                        <th>Account</th>
+                        <th>Amount</th>
+                        <th>Frequency</th>
+                        <th>Next Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="scheduled-payments-body">
+                    <!-- Loaded dynamically -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Schedule Payment Modal -->
+        <div class="modal-overlay" id="schedule-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Schedule Recurring Payment</h3>
+                    <button class="close-btn" onclick="closeModal('schedule-modal')">&times;</button>
+                </div>
+                <form id="schedule-payment-form">
+                    <div class="form-group">
+                        <label>Account Number</label>
+                        <input type="text" id="sched-acc-no" class="form-control" value="SB1001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Payee Name / Title</label>
+                        <input type="text" id="sched-payee" class="form-control" placeholder="e.g. House Rent, Airtel Wifi" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Amount (₹)</label>
+                        <input type="number" id="sched-amount" class="form-control" placeholder="15000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Frequency</label>
+                        <select id="sched-freq" class="form-control">
+                            <option value="MONTHLY">Monthly</option>
+                            <option value="WEEKLY">Weekly</option>
+                            <option value="YEARLY">Yearly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Next Due Date</label>
+                        <input type="date" id="sched-date" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Schedule Payment</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/scheduled.js"></script>
+</body>
+</html>

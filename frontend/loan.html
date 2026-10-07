@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link active">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Loan Eligibility Calculator</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Evaluate borrowing capacity and estimated EMI obligations</p>
+            </div>
+        </header>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px;">
+            <div class="card">
+                <h3 style="font-size:1.1rem; color:#0f172a; margin-bottom:16px;">Applicant Financial Profile</h3>
+                <form id="loan-calc-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Monthly Income (₹)</label>
+                            <input type="number" id="loan-income" class="form-control" value="65000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Monthly Expenses (₹)</label>
+                            <input type="number" id="loan-expenses" class="form-control" value="25000" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Existing Monthly EMI (₹)</label>
+                            <input type="number" id="loan-emi" class="form-control" value="5000">
+                        </div>
+                        <div class="form-group">
+                            <label>Credit Score (300 - 900)</label>
+                            <input type="number" id="loan-score" class="form-control" value="780" min="300" max="900" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Requested Loan Amount (₹)</label>
+                            <input type="number" id="loan-amount" class="form-control" value="300000" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tenure (Months)</label>
+                            <input type="number" id="loan-tenure" class="form-control" value="24" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Evaluate Eligibility</button>
+                </form>
+            </div>
+
+            <div class="card" id="loan-result-card" style="display:none;">
+                <!-- Result rendered dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/loan.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accounts — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link active">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Bank Accounts</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Manage active Savings & Current accounts</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+                <button class="btn btn-secondary" onclick="openModal('deposit-modal')">+ Deposit</button>
+                <button class="btn btn-secondary" onclick="openModal('withdraw-modal')">- Withdraw</button>
+                <button class="btn btn-secondary" onclick="openModal('transfer-modal')">Transfer</button>
+                <button class="btn btn-primary" onclick="openModal('account-modal')">+ Open Account</button>
+            </div>
+        </header>
+
+        <section class="stats-grid" id="accounts-list">
+            <!-- Loaded dynamically -->
+        </section>
+
+        <!-- Open Account Modal -->
+        <div class="modal-overlay" id="account-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Open New Bank Account</h3>
+                    <button class="close-btn" onclick="closeModal('account-modal')">&times;</button>
+                </div>
+                <form id="open-account-form">
+                    <div class="form-group">
+                        <label>Customer ID</label>
+                        <input type="number" id="acc-customer-id" class="form-control" value="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Account Type</label>
+                        <select id="acc-type" class="form-control">
+                            <option value="SAVINGS">Savings Account (4.5% interest)</option>
+                            <option value="CURRENT">Current Account (₹25,000 Overdraft)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Deposit (₹)</label>
+                        <input type="number" id="acc-deposit" class="form-control" value="5000" min="1000" step="500" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Create Account</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Deposit Modal -->
+        <div class="modal-overlay" id="deposit-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Deposit Funds</h3>
+                    <button class="close-btn" onclick="closeModal('deposit-modal')">&times;</button>
+                </div>
+                <form id="deposit-form">
+                    <div class="form-group">
+                        <label>Target Account Number</label>
+                        <input type="text" id="dep-acc-no" class="form-control" value="SB1001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Deposit Amount (₹)</label>
+                        <input type="number" id="dep-amount" class="form-control" placeholder="1000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="dep-desc" class="form-control" placeholder="e.g. Salary, Swiggy Refund">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Deposit</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Withdraw Modal -->
+        <div class="modal-overlay" id="withdraw-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Withdraw Funds</h3>
+                    <button class="close-btn" onclick="closeModal('withdraw-modal')">&times;</button>
+                </div>
+                <form id="withdraw-form">
+                    <div class="form-group">
+                        <label>Source Account Number</label>
+                        <input type="text" id="with-acc-no" class="form-control" value="SB1001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Withdrawal Amount (₹)</label>
+                        <input type="number" id="with-amount" class="form-control" placeholder="500" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input type="text" id="with-desc" class="form-control" placeholder="e.g. Swiggy Order, Uber Ride">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Confirm Withdrawal</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Transfer Modal -->
+        <div class="modal-overlay" id="transfer-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Transfer Money</h3>
+                    <button class="close-btn" onclick="closeModal('transfer-modal')">&times;</button>
+                </div>
+                <form id="transfer-form">
+                    <div class="form-group">
+                        <label>Source Account</label>
+                        <input type="text" id="trans-from-acc" class="form-control" value="SB1001" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Account</label>
+                        <input type="text" id="trans-to-acc" class="form-control" value="CA1002" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Transfer Amount (₹)</label>
+                        <input type="number" id="trans-amount" class="form-control" placeholder="2000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Note / Description</label>
+                        <input type="text" id="trans-desc" class="form-control" placeholder="Fund transfer">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Execute Transfer</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/accounts.js"></script>
+</body>
+</html>

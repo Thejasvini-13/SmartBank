@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Health — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link active">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Financial Health Score</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Comprehensive score analysis across savings, debt, spending, and goals</p>
+            </div>
+        </header>
+
+        <div style="display:grid; grid-template-columns: 1fr 2fr; gap:24px; margin-bottom:32px;">
+            <div class="card" style="text-align:center; padding:36px 24px;">
+                <div class="card-subtitle">Overall Health Rating</div>
+                <div style="font-size:3.5rem; font-weight:800; color:#2563eb; margin:16px 0;" id="health-total-score">82</div>
+                <div style="font-size:1.2rem; font-weight:700; color:#16a34a;" id="health-category-title">GOOD</div>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size:1.1rem; color:#0f172a; margin-bottom:20px;">Category Score Breakdown</h3>
+                
+                <div style="margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:600;">
+                        <span>Savings Rate Score</span>
+                        <span id="bar-savings-val">90%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-savings" style="width: 90%;"></div></div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:600;">
+                        <span>Spending Discipline</span>
+                        <span id="bar-spending-val">80%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-spending" style="width: 80%;"></div></div>
+                </div>
+
+                <div style="margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:600;">
+                        <span>Debt & EMI Control</span>
+                        <span id="bar-debt-val">90%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-debt" style="width: 90%;"></div></div>
+                </div>
+
+                <div>
+                    <div style="display:flex; justify-content:space-between; margin-bottom:4px; font-weight:600;">
+                        <span>Savings Goal Progress</span>
+                        <span id="bar-goals-val">70%</span>
+                    </div>
+                    <div class="progress-bar-bg"><div class="progress-bar-fill" id="bar-goals" style="width: 70%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3 style="font-size:1.1rem; color:#0f172a; margin-bottom:12px;">Intelligent Health Recommendations</h3>
+            <ul id="health-recommendations" style="color:#475569; font-size:0.95rem; padding-left:20px;">
+                <!-- Loaded dynamically -->
+            </ul>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/health.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goals — SmartBank</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand"><div class="brand-icon">SB</div>SmartBank</div>
+        <ul class="nav-menu">
+            <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+            <li><a href="accounts.html" class="nav-link">Accounts</a></li>
+            <li><a href="transactions.html" class="nav-link">Transactions</a></li>
+            <li><a href="savings.html" class="nav-link active">Savings Goals</a></li>
+            <li><a href="limits.html" class="nav-link">Spending Limits</a></li>
+            <li><a href="scheduled.html" class="nav-link">Scheduled Payments</a></li>
+            <li><a href="loan.html" class="nav-link">Loan Calculator</a></li>
+            <li><a href="health.html" class="nav-link">Financial Health</a></li>
+            <li><a href="security.html" class="nav-link">Security Audit</a></li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div>
+                <h1 class="page-title">Savings Goal Tracker</h1>
+                <p style="color:#64748b; font-size:0.95rem;">Track progress towards target financial goals</p>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('goal-modal')">+ Create Savings Goal</button>
+        </header>
+
+        <section class="stats-grid" id="goals-grid">
+            <!-- Loaded dynamically -->
+        </section>
+
+        <!-- Create Goal Modal -->
+        <div class="modal-overlay" id="goal-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Create New Savings Goal</h3>
+                    <button class="close-btn" onclick="closeModal('goal-modal')">&times;</button>
+                </div>
+                <form id="create-goal-form">
+                    <div class="form-group">
+                        <label>Goal Title</label>
+                        <input type="text" id="goal-title" class="form-control" placeholder="e.g. New Laptop, Emergency Fund" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Target Amount (₹)</label>
+                        <input type="number" id="goal-target" class="form-control" placeholder="80000" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Initial Savings (₹)</label>
+                        <input type="number" id="goal-current" class="form-control" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label>Target Deadline</label>
+                        <input type="date" id="goal-deadline" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Create Goal</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Add Funds Modal -->
+        <div class="modal-overlay" id="deposit-goal-modal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Deposit to <span id="deposit-goal-title-display">Goal</span></h3>
+                    <button class="close-btn" onclick="closeModal('deposit-goal-modal')">&times;</button>
+                </div>
+                <form id="add-savings-form">
+                    <input type="hidden" id="deposit-goal-id">
+                    <div class="form-group">
+                        <label>Amount to Allocate (₹)</label>
+                        <input type="number" id="deposit-goal-amount" class="form-control" placeholder="5000" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Add Savings</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/api.js"></script>
+    <script src="js/savings.js"></script>
+</body>
+</html>
